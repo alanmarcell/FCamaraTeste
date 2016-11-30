@@ -134,7 +134,7 @@ angular2-MEAN
 
 ## Features (Angular2, Express, Gulp, MongoDB, Node)
 
-1.  Angular 2 Quick Start application (Tours of Product) from https://angular.io/docs/ts/latest/quickstart.html
+1.  Angular 2 simple application for test purpose
 2.  Added support for Gulp so that js files are moved out of the app folder.
 3.  It will create a dist folder where it will place all the js files.
 4.  Gulp will monitor for the changes via help of watcher.
