@@ -1,0 +1,23 @@
+<nav class="navbar navbar-inverse" role="navigation">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menu-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/">{{ title }}</a>
+	</div>
+	<div class="collapse navbar-collapse navbar-menu-collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li class="active"> <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+			<li class="active"><a routerLink="/products" routerLinkActive="active">Products</a></li>
+			<li class="active"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+			<li class="active"><a routerLink="/register" routerLinkActive="active">SignUp</a></li>
+			<li class="active"><a routerLink="/login" (click)="logout()" routerLinkActive="active">Logout</a></li>
+		</ul>
+	</div>
+</nav>
+<div class="container">
+	<router-outlet></router-outlet>
+</div>
