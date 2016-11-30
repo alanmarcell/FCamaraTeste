@@ -7,9 +7,6 @@ var jwt = require('jsonwebtoken');
 class AuthenticationController {
 
     verifyToken(req, res, next) {
-        console.log("req.body verifuToken()");
-        console.log(req.body);
-
         // check header or url parameters or post parameters for token
         var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
@@ -23,9 +20,6 @@ class AuthenticationController {
                 } else {
                     // if everything is good, save to request for use in other routes
                     req.decoded = decoded;
-
-                    console.log("decoded");
-                    console.log(decoded);
                     next();
                 }
             });
@@ -45,8 +39,6 @@ class AuthenticationController {
     authenticateUser(req: express.Request, res: express.Response): void {
         try {
             var userName: string = req.body.name;
-            console.log("req.body");
-            console.log(req.body);
             var userBusiness = new UserBusiness();
             userBusiness.findOne(userName, (error, user) => {
                 if (error) res.send({ "error": "error" });
@@ -86,8 +78,6 @@ class AuthenticationController {
     authenticateToken(req: express.Request, res: express.Response): void {
         try {
             var userName: string = req.body.name;
-            console.log("req.body");
-            console.log(req.body);
             var userBusiness = new UserBusiness();
             userBusiness.findOne(userName, (error, user) => {
                 if (error) res.send({ "error": "error" });

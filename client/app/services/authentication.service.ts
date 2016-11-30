@@ -14,8 +14,6 @@ export class AuthenticationService {
     constructor(private http: Http) {
         this.token = localStorage.getItem("_token");
         if (this.token && this.token !== '') {
-            console.log("Localstorage this.token");
-            console.log(this.token);
             this.authenticateToken(this.token);
         }
     }
@@ -39,9 +37,6 @@ export class AuthenticationService {
     }
 
     private postUser(user: User): Promise<JSON> {
-
-        console.log("save deeper authenticate service post");
-        console.log(user);
         let headers = new Headers({
             'Content-Type': 'application/json'
         });
@@ -58,9 +53,6 @@ export class AuthenticationService {
     }
 
     private postToken(token): Promise<void> {
-
-        console.log("postToken");
-        console.log(token);
         let headers = new Headers({
             'Content-Type': 'application/json'
         });

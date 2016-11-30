@@ -19,8 +19,7 @@ export class ProductsComponent implements OnInit {
         private productService: ProductService) { }
     getProducts() {
         this.productService.getProducts().then(products => {
-        this.products = products,
-            console.log(products)
+        this.products = products;
         });
     }
     ngOnInit() {
