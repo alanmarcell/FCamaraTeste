@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 mongoose.connect("mongodb://admin:admin@jello.modulusmongo.net:27017/d7Ojirex");
 // Create a schema
 var ProductSchema = new mongoose.Schema({
-    product: String,
+    name: String,
     price: Number,
     category: String
 });
@@ -15,7 +15,7 @@ var Product = mongoose.model('Product', ProductSchema);
 
 // Create a documents on the db
 Product.create({
-    product: "Martelo",
+    name: "Martelo",
     price: 10,
     category: "Ferramentas"
 },
@@ -25,7 +25,7 @@ Product.create({
     });
 
     Product.create({
-    product: "Maçarico",
+    name: "Maçarico",
     price: 375,
     category: "Ferramentas"
 },
@@ -35,7 +35,7 @@ Product.create({
     });
 
     Product.create({
-    product: "Chave de Fenda",
+    name: "Chave de Fenda",
     price: 12,
     category: "Ferramentas"
 },
@@ -45,7 +45,7 @@ Product.create({
     });
 
     Product.create({
-    product: "Celular",
+    name: "Celular",
     price: 999.99,
     category: "Eletrônicos"
 },
@@ -55,7 +55,7 @@ Product.create({
     });
 
     Product.create({
-    product: "Notebook",
+    name: "Notebook",
     price: 2000,
     category: "Eletrônicos"
 },
@@ -65,7 +65,7 @@ Product.create({
     });
 
     Product.create({
-    product: "TV",
+    name: "TV",
     price: 3500,
     category: "Eletrônicos"
 },
@@ -75,7 +75,7 @@ Product.create({
     });
 
     Product.create({
-    product: "Batedeira",
+    name: "Batedeira",
     price: 190,
     category: "Utensílios"
 },
@@ -85,7 +85,7 @@ Product.create({
     });
 
     Product.create({
-    product: "Liquidificador",
+    name: "Liquidificador",
     price: 99,
     category: "Utensílios"
 },
@@ -95,7 +95,7 @@ Product.create({
     });
 
     Product.create({
-    product: "Fogão",
+    name: "Fogão",
     price: 500,
     category: "Utensílios"
 },

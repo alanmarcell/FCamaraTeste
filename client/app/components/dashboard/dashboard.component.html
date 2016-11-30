@@ -8,10 +8,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let product of products" (click)="gotoDetail(products)" >
+        <tr *ngFor="let product of products" (click)="gotoDetail(products)">
             <td>{{product.name}}</td>
             <td>{{product.price|currency:'BRL':true}}</td>
-            <td>{{product.name}}</td>
+            <td>{{product.category}}</td>
         </tr>
     </tbody>
 </table>
