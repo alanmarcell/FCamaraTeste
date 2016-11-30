@@ -4,7 +4,7 @@
 
 ##Introduction
 
-Basic Angular seed application. It uses ExpressJS along with Mongo DB support (Mongoose) via a wrapper of Repository Pattern as Business layer.
+Basic Angular seed application. It uses ExpressJS along with Mongo DB support (Mongoose) via a wrapper of Repository Pattern as Business layer. It uses JSON web token for authentication.
 It also uses Gulp for running task and TsLint.The seed application is built over node and uses latest node packages.
 
 ## Prerequisites
