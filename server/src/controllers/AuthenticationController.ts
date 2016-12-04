@@ -56,7 +56,7 @@ class AuthenticationController {
                             // if user is found and password is right
                             // create a token
                             var token = jwt.sign(user, "fcamara", {
-                                expiresIn: 60 // expires in 60 seconds
+                                expiresIn: 6000 // expires in 60 seconds
                             });
                             // return the information including token as JSON
                             res.json({
