@@ -74,45 +74,6 @@ class AuthenticationController {
             res.send({ "error": "error in your request" });
         }
     }
-
-    authenticateToken(req: express.Request, res: express.Response): void {
-        try {
-            var userName: string = req.body.name;
-            var userBusiness = new UserBusiness();
-            userBusiness.findOne(userName, (error, user) => {
-                if (error) res.send({ "error": "error" });
-                else {
-
-                    if (!user) {
-                        res.json({ success: false, message: 'Authentication failed. User not found.' });
-                    } else if (user) {
-
-                        // check if password matches
-                        if (user.password != req.body.password) {
-                            res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-                        } else {
-
-                            // if user is found and password is right
-                            // create a token
-                            var token = jwt.sign(user, "fcamara", {
-                                expiresIn: 60 // expires in 60 seconds
-                            });
-                            // return the information including token as JSON
-                            res.json({
-                                success: true,
-                                message: 'Enjoy your token!',
-                                token: token
-                            });
-                        }
-                    }
-                }
-            });
-        }
-        catch (e) {
-            console.log(e);
-            res.send({ "error": "error in your request" });
-        }
-    }
 }
 
 export = AuthenticationController;

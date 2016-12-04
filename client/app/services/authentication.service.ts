@@ -13,9 +13,7 @@ export class AuthenticationService {
 
     constructor(private http: Http) {
         this.token = localStorage.getItem("_token");
-        if (this.token && this.token !== '') {
-            this.authenticateToken(this.token);
-        }
+
     }
 
     getToken() {
