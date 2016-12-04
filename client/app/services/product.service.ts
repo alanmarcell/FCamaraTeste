@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient} from '../httpClient';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Product } from "../models/product";
@@ -9,14 +9,12 @@ export class ProductService {
 
     private productsUrl = 'api/products';  // URL to web api
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     getProducts(): Promise<Product[]> {
-        let headers = new Headers({
-            'x-access-token': localStorage.getItem("_token")
-        });
 
-        return this.http.get(this.productsUrl, { headers: headers })
+
+        return this.http.get(this.productsUrl)
             .toPromise()
             .then(response => {
                 return response.json();
@@ -24,11 +22,8 @@ export class ProductService {
             .catch(this.handleError);
     }
     getProduct(id: string): Promise<Product> {
-        let headers = new Headers({
-            'x-access-token': localStorage.getItem("_token")
-        });
 
-        return this.http.get(this.productsUrl + '/' + id, { headers: headers })
+        return this.http.get(this.productsUrl + '/' + id)
             .toPromise()
             .then(response => response.json())
             .catch(this.handleError);
@@ -42,41 +37,31 @@ export class ProductService {
     }
 
     private post(product: Product): Promise<Product> {
-        let headers = new Headers({
-            'x-access-token': localStorage.getItem("_token")
-        });
 
         return this.http
-            .post(this.productsUrl, JSON.stringify(product), { headers: headers })
+            .post(this.productsUrl, JSON.stringify(product))
             .toPromise()
             .then(response => response.json().data)
             .catch(this.handleError);
     }
 
     private put(product: Product) {
-        let headers = new Headers({
-            'x-access-token': localStorage.getItem("_token")
-        });
-
 
         let url = `${this.productsUrl}/${product._id}`;
 
         return this.http
-            .put(url, JSON.stringify(product), { headers: headers })
+            .put(url, JSON.stringify(product))
             .toPromise()
             .then(() => product)
             .catch(this.handleError);
     }
 
     delete(product: Product) {
-        let headers = new Headers({
-            'x-access-token': localStorage.getItem("_token")
-        });
 
         let url = `${this.productsUrl}/${product._id}`;
 
         return this.http
-            .delete(url, headers)
+            .delete(url)
             .toPromise()
             .catch(this.handleError);
     }
