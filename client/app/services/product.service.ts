@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '../httpClient';
-import { Headers, Http, Response } from '@angular/http';
+import { HttpClient } from '../httpClient';
+import { Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Product } from "../models/product";
+import { Router } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Injectable()
 export class ProductService {
 
     private productsUrl = 'api/products';  // URL to web api
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private router: Router, private location: Location) { }
 
     getProducts(): Promise<Product[]> {
 
@@ -67,7 +69,12 @@ export class ProductService {
     }
 
     private handleError(error: any) {
-        console.error('An error occurred', error);
+        if (error.status == 403) {
+            // this.location.replaceState('/');
+            this.router.navigate(['/login']);
+        }
+        console.error('An error occurred', error.status);
+
         return Promise.reject(error.message || error);
     }
 }

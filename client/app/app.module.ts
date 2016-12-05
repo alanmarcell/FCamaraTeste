@@ -13,8 +13,10 @@ import { ProductsComponent } from './components/products/products.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductDetailComponent } from './components/productDetail/product-detail.component';
 
+import { LoggedInGuard } from './guards/loggedIn.guard'
+
 import { ProductService } from './services/product.service';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 
 @NgModule({
@@ -33,10 +35,11 @@ import { UserService } from './services/user.service';
     ProductsComponent
   ],
   providers: [
-    AuthenticationService,
+    AuthService,
     ProductService,
     UserService,
-    HttpClient
+    HttpClient,
+    LoggedInGuard
   ],
   bootstrap: [AppComponent]
 })

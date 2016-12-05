@@ -5,6 +5,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductDetailComponent } from './components/productDetail/product-detail.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoggedInGuard } from './guards/loggedIn.guard';
 const appRoutes: Routes = [
   {
     path: '',
@@ -13,11 +14,13 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [LoggedInGuard] 
   },
   {
     path: 'products',
-    component: ProductsComponent
+    component: ProductsComponent,
+    canActivate: [LoggedInGuard] 
   },
   {
     path: 'login',
@@ -29,7 +32,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'productDetail/:id',
-    component: ProductDetailComponent
+    component: ProductDetailComponent,
+    canActivate: [LoggedInGuard] 
   }
 ];
 

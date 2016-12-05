@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from "../../models/user";
 
-import { AuthenticationService } from "../../services/authentication.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
     selector: 'fc-login',
@@ -18,7 +18,7 @@ export class LoginComponent {
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService,
+        private authenticationService: AuthService,
         private route: ActivatedRoute) {
     }
 

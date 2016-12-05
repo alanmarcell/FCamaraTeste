@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient} from '../httpClient';
 
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { User } from "../models/user";
 
@@ -9,7 +10,7 @@ export class UserService {
 
     private usersUrl = 'api/users';  // URL to web api
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     getUsers(): Promise<User[]> {
         return this.http.get(this.usersUrl)
@@ -33,12 +34,9 @@ export class UserService {
     }
 
     private post(user: User): Promise<User> {
-        let headers = new Headers({
-            'Content-Type': 'application/json'
-        });
 
         return this.http
-            .post(this.usersUrl, JSON.stringify(user), { headers: headers })
+            .post(this.usersUrl, JSON.stringify(user))
             .toPromise()
             .then(response => {
                 return response.json().data;
@@ -47,26 +45,22 @@ export class UserService {
     }
 
     private put(user: User) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
 
         let url = `${this.usersUrl}/${user._id}`;
 
         return this.http
-            .put(url, JSON.stringify(user), { headers: headers })
+            .put(url, JSON.stringify(user))
             .toPromise()
             .then(() => user)
             .catch(this.handleError);
     }
 
     delete(user: User) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
 
         let url = `${this.usersUrl}/${user._id}`;
 
         return this.http
-            .delete(url, headers)
+            .delete(url)
             .toPromise()
             .catch(this.handleError);
     }

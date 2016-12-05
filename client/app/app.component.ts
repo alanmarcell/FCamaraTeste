@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from "./services/authentication.service";
+import { AuthService } from "./services/auth.service";
 @Component({
     selector: 'my-app',
     templateUrl: './app/app.html'
@@ -8,7 +8,7 @@ import { AuthenticationService } from "./services/authentication.service";
 export class AppComponent {
     title = 'FCamara Teste';
 
-    constructor(private authenticateService: AuthenticationService) { }
+    constructor(private authenticateService: AuthService) { }
 
 
     logout() {

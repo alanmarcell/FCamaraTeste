@@ -14,7 +14,7 @@ class AuthenticationController {
         if (token) {
 
             // verifies secret and checks exp
-            jwt.verify(token, 'fcamara', function(err, decoded) {
+            jwt.verify(token, 'fcamara', function (err, decoded) {
                 if (err) {
                     res.json({ success: false, message: 'Failed to authenticate token.' });
                 } else {
@@ -62,7 +62,8 @@ class AuthenticationController {
                             res.json({
                                 success: true,
                                 message: 'Enjoy your token!',
-                                token: token
+                                token: token,
+                                expiresIn: 6000
                             });
                         }
                     }
