@@ -16,19 +16,28 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<div class="form-group">
-								<input type="text" [(ngModel)]="user.name" class="form-control" placeholder="Username" value="">
-							</div>
-							<div class="form-group">
-								<input type="password" [(ngModel)]="user.password" class="form-control" placeholder="Password">
-							</div>
-							<div class="form-group">
-								<div class="row">
-									<div class="col-sm-6 col-sm-offset-3">
-										<input type="submit" (click)="authenticate()" class="form-control btn btn-login" value="Log In">
+							<form #myForm='ngForm'>
+								<div class="form-group">
+									<input required #name='ngModel' name='name' type="text" [(ngModel)]="user.name" class="form-control" placeholder="Username"
+										value="">
+									<span *ngIf='name.invalid' class="form-control alert-danger">
+									Nome Obrigatório
+									</span>
+								</div>
+								<div class="form-group">
+									<input required #password='ngModel' name='password' type="password" [(ngModel)]="user.password" class="form-control" placeholder="Password">
+									<span *ngIf='password.invalid' class="form-control alert-danger">
+									Senha Obrigatória
+									</span>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-6 col-sm-offset-3">
+											<input type="submit" [disabled]=myForm.form.invalid (click)="authenticate()" class="form-control btn btn-login" value="Log In">
+										</div>
 									</div>
 								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
