@@ -4,6 +4,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from "../../services/user.service";
 import { User } from "../../models/user";
 
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 @Component({
     selector: 'fc-register',
     templateUrl: './app/components/register/register.component.html',
@@ -14,11 +16,18 @@ export class RegisterComponent implements OnInit {
     @Input() user: User;
     newUser: boolean = false;
     error: any;
+    myForm: FormGroup;
 
     constructor(
         private router: Router,
         private userService: UserService,
-        private route: ActivatedRoute) {
+        private route: ActivatedRoute,
+        private fb: FormBuilder) {
+        this.myForm = fb.group({
+            name: ['', Validators.required],
+            password: ['', Validators.required],
+            passwordConfirm: ['', Validators.required]
+        });
     }
 
     ngOnInit() {

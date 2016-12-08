@@ -16,21 +16,36 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form #myForm='ngForm'>
+                            <form [formGroup]="myForm">
                                 <div class="form-group">
-                                    <input required #name='ngModel' name='name' [(ngModel)]="user.name" type="text" class="form-control" placeholder="Username">
-                                    <span *ngIf='name.invalid' class="form-control alert-danger">
+                                    <input 
+                                        formControlName="name"
+                                        name='name'
+                                        [(ngModel)]="user.name"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Username">
+                                    <span *ngIf='myForm.controls.name.invalid' class="form-control alert-danger">
 									Nome Obrigatória
 									</span>
                                 </div>
                                 <div class="form-group">
-                                    <input required #password='ngModel' name='password' [(ngModel)]="user.password" type="password" class="form-control" placeholder="Password">
-                                    <span *ngIf='password.invalid' class="form-control alert-danger">
+                                    <input 
+                                        formControlName='password' 
+                                        name='password' 
+                                        [(ngModel)]="user.password" 
+                                        type="password" class="form-control" 
+                                        placeholder="Password">
+                                    <span *ngIf='myForm.controls.password.invalid' class="form-control alert-danger">
 									Senha Obrigatória
                                 </span>
                                 </div>
                                 <div class="form-group">
-                                    <input required #passwordConfirm='ngModel' name='passwordConfirm' [(ngModel)]="user.passwordConfirm" type="password" class="form-control"
+                                    <input formControlName="passwordConfirm" 
+                                        name='passwordConfirm' 
+                                        [(ngModel)]="user.passwordConfirm" 
+                                        type="password" 
+                                        class="form-control"
                                         placeholder="Confirm Password">
                                     <span *ngIf='user.passwordConfirm !== user.password' class="form-control alert-danger">
 									Senhas não conferem
@@ -39,7 +54,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <button (click)="save()" [disabled]=myForm.form.invalid class="form-control btn btn-register">Register Now</button>
+                                            <button (click)="save()" [disabled]="myForm.invalid" lass="form-control btn btn-register">Register Now</button>
                                         </div>
                                     </div>
                                 </div>
