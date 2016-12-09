@@ -15,12 +15,12 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [LoggedInGuard] 
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'products',
     component: ProductsComponent,
-    canActivate: [LoggedInGuard] 
+    canActivate: [LoggedInGuard]
   },
   {
     path: 'login',
@@ -33,7 +33,7 @@ const appRoutes: Routes = [
   {
     path: 'productDetail/:id',
     component: ProductDetailComponent,
-    canActivate: [LoggedInGuard] 
+    canActivate: [LoggedInGuard]
   }
 ];
 

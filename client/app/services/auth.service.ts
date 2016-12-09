@@ -35,7 +35,7 @@ export class AuthService {
         return this.postUser(user);
     }
 
-    private postUser(user: User): Promise<JSON> {
+    private postUser(user: User): Promise<string> {
         return this.http
             .post(this.userAuthenticationUrl, JSON.stringify(user))
             .toPromise()
@@ -66,7 +66,7 @@ export class AuthService {
         console.log('Token expiration timer set for', seconds, "seconds");
     }
 
-    
+
     public isAuthenticated() {
         return this.authenticated;
     }

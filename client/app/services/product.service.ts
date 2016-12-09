@@ -69,7 +69,7 @@ export class ProductService {
     }
 
     private handleError(error: any) {
-        if (error.status == 403) {
+        if (error.status === 403) {
             // this.location.replaceState('/');
             this.router.navigate(['/login']);
         }

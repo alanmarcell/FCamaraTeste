@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { HttpClient} from './httpClient';
+import { HttpClient } from './httpClient';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
@@ -13,7 +13,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductDetailComponent } from './components/productDetail/product-detail.component';
 
-import { LoggedInGuard } from './guards/loggedIn.guard'
+import { LoggedInGuard } from './guards/loggedIn.guard';
 
 import { ProductService } from './services/product.service';
 import { AuthService } from './services/auth.service';
