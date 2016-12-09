@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
 
     products: Product[];
     selectedProduct: Product;
+    message:string='';
     error: any;
 
     constructor(
@@ -42,7 +43,8 @@ export class ProductsComponent implements OnInit {
             .delete(product)
             .then(res => {
                 this.products = this.products.filter(h => h !== product);
-                if (this.selectedProduct === product) { this.selectedProduct = null; }
+                if (this.selectedProduct === product) { this.selectedProduct = null;}
+                this.message="Product deleted" ;
             })
             .catch(error => this.error = error);
     }

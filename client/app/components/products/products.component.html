@@ -3,6 +3,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="error" *ngIf="error">{{error}}</div>
+        <div class="pull-left">
+            <p *ngIf="message.length" class="alert alert-info">{{message}}</p>
+        </div>
         <div class="pull-right">
             <button class="btn btn-success" (click)="addProduct()">Add New Product</button>
         </div>
