@@ -14,7 +14,6 @@ class ProductBusiness implements IProductBusiness {
   }
 
   retrieve(callback: (error: any, result: any) => void, start?: string, items?: string) {
-    console.log('retrive prod start ', start, ' itens ', items, 'TYPE: ', typeof (items));
     this.productRepository.retrieve(callback, start, items);
   }
 
