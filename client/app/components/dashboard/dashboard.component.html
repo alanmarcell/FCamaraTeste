@@ -1,17 +1,17 @@
 <h3>Products</h3>
 <table class="table" *ngIf="products.length>0">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Category</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of products" (click)="gotoDetail(products)">
-            <td>{{product.name}}</td>
-            <td>{{product.price|currency:'BRL':true}}</td>
-            <td>{{product.category}}</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products" (click)="gotoDetail(products)">
+      <td>{{product.name}}</td>
+      <td>{{product.price|currency:'BRL':true}}</td>
+      <td>{{product.category}}</td>
+    </tr>
+  </tbody>
 </table>

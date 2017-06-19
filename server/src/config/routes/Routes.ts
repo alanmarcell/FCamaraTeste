@@ -1,5 +1,4 @@
 import express = require('express');
-import path = require('path');
 
 import ProductRoutes = require('../routes/ProductRoutes');
 import UserRoutes = require('../routes/UserRoutes');
@@ -9,12 +8,13 @@ var app = express();
 
 class Routes {
 
-    get routes() {
-        app.use("/", new AuthenticationRoutes().routes)
-        app.use("/", new UserRoutes().routes);
-        app.use("/", new ProductRoutes().routes)
+  get routes() {
+    app.use('/', new AuthenticationRoutes().routes);
+    app.use('/', new UserRoutes().routes);
+    app.use('/', new ProductRoutes().routes);
 
-        return app;
-    }
+    return app;
+  }
 }
+
 export = Routes;

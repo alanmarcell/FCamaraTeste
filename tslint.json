@@ -1,17 +1,18 @@
 {
-    "extends": "tslint:recommended",
-    "rules": {
-        "quotemark": [
-            true,
-            "single"
-        ],
-        "member-access": false,
-        "curly": false,
-        "no-var-keyword": false,
-        "arrow-parens": false,
-        "one-variable-per-declaration": [false],
-        "object-literal-sort-keys": false,
-        "trailing-comma": [false],
-        "no-console": [false]
-    }
+  "extends": "tslint:recommended",
+  "rules": {
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "member-access": false,
+    "curly": false,
+    "no-var-keyword": false,
+    "arrow-parens": false,
+    "one-variable-per-declaration": [false],
+    "object-literal-sort-keys": false,
+    "trailing-comma": [false],
+    "no-console": [false],
+    "one-line": false
+  }
 }

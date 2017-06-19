@@ -3,42 +3,39 @@ import IProductBusiness = require('./interfaces/ProductBusiness');
 import IProductModel = require('./../model/interfaces/ProductModel');
 
 class ProductBusiness implements IProductBusiness {
-  private _productRepository: ProductRepository;
+  private productRepository: ProductRepository;
 
   constructor() {
-    this._productRepository = new ProductRepository();
+    this.productRepository = new ProductRepository();
   }
 
   create(item: IProductModel, callback: (error: any, result: any) => void) {
-    this._productRepository.create(item, callback);
+    this.productRepository.create(item, callback);
   }
 
   retrieve(callback: (error: any, result: any) => void, start?: string, items?: string) {
     console.log('retrive prod start ', start, ' itens ', items, 'TYPE: ', typeof (items));
-    this._productRepository.retrieve(callback, start, items);
+    this.productRepository.retrieve(callback, start, items);
   }
 
+  // tslint:disable-next-line:variable-name
   update(_id: string, item: IProductModel, callback: (error: any, result: any) => void) {
-
-    this._productRepository.findById(_id, (err, res) => {
+    this.productRepository.findById(_id, (err, res) => {
       if (err) callback(err, res);
-
-      else
-        this._productRepository.update(res._id, item, callback);
-
+      else this.productRepository.update(res._id, item, callback);
     });
   }
 
+  // tslint:disable-next-line:variable-name
   delete(_id: string, callback: (error: any, result: any) => void) {
-    this._productRepository.delete(_id, callback);
+    this.productRepository.delete(_id, callback);
   }
 
+  // tslint:disable-next-line:variable-name
   findById(_id: string, callback: (error: any, result: IProductModel) => void) {
-    this._productRepository.findById(_id, callback);
+    this.productRepository.findById(_id, callback);
   }
-
 }
-
 
 Object.seal(ProductBusiness);
 export = ProductBusiness;

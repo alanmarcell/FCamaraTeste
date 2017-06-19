@@ -10,7 +10,9 @@
     "noImplicitAny": false
   },
   "exclude": [
-    "typings"
+    "typings",
+    "typings/index.d.ts",
+    "node_modules"
   ],
   "types": [
       "core-js"

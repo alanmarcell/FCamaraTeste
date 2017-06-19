@@ -1,6 +1,6 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { ProductService } from "../../services/product.service";
-import { Product } from "../../models/product";
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../models/product';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './app/components/products/products.component.html'
 })
 
-export class ProductsComponent implements OnChanges {
+export class ProductsComponent implements OnInit {
 
   products: Product[];
   selectedProduct: Product;
@@ -41,7 +41,7 @@ export class ProductsComponent implements OnChanges {
   }
 
   ngOnChanges() {
-    console.log('onchange start ', this.start, ' itens ', this.items)
+    console.log('onchange start ', this.start, ' itens ', this.items);
     this.getProducts(this.start, this.items);
   }
 
@@ -63,7 +63,7 @@ export class ProductsComponent implements OnChanges {
       .then(res => {
         this.products = this.products.filter(h => h !== product);
         if (this.selectedProduct === product) { this.selectedProduct = null; }
-        this.message = "Product deleted";
+        this.message = 'Product deleted';
       })
       .catch(error => this.error = error);
   }

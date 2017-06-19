@@ -1,49 +1,45 @@
-import UserRepository = require("./../repository/UserRepository");
-import IUserBusiness = require("./interfaces/UserBusiness");
-import IUserModel = require("./../model/interfaces/UserModel");
-import UserModel = require("./../model/UserModel");
-
+import UserRepository = require('./../repository/UserRepository');
+import IUserBusiness = require('./interfaces/UserBusiness');
+import IUserModel = require('./../model/interfaces/UserModel');
 
 class UserBusiness implements IUserBusiness {
-    private _userRepository: UserRepository;
+  private userRepository: UserRepository;
 
-    constructor() {
-        this._userRepository = new UserRepository();
-    }
+  constructor() {
+    this.userRepository = new UserRepository();
+  }
 
-    create(user: IUserModel, callback: (error: any, result: any) => void) {
-        this._userRepository.create(user, callback);
-    }
+  create(user: IUserModel, callback: (error: any, result: any) => void) {
+    this.userRepository.create(user, callback);
+  }
 
-    retrieve(callback: (error: any, result: any) => void) {
-        this._userRepository.retrieve(callback);
-    }
+  retrieve(callback: (error: any, result: any) => void) {
+    this.userRepository.retrieve(callback);
+  }
 
-    update(_id: string, item: IUserModel, callback: (error: any, result: any) => void) {
+  // tslint:disable-next-line:variable-name
+  update(_id: string, item: IUserModel, callback: (error: any, result: any) => void) {
 
-        this._userRepository.findById(_id, (err, res) => {
-            if (err) callback(err, res);
+    this.userRepository.findById(_id, (err, res) => {
+      if (err) callback(err, res);
+      else this.userRepository.update(res._id, item, callback);
+    });
+  }
 
-            else
-                this._userRepository.update(res._id, item, callback);
+  // tslint:disable-next-line:variable-name
+  delete(_id: string, callback: (error: any, result: any) => void) {
+    this.userRepository.delete(_id, callback);
+  }
 
-        });
-    }
+  // tslint:disable-next-line:variable-name
+  findById(_id: string, callback: (error: any, result: IUserModel) => void) {
+    this.userRepository.findById(_id, callback);
+  }
 
-    delete(_id: string, callback: (error: any, result: any) => void) {
-        this._userRepository.delete(_id, callback);
-    }
-
-    findById(_id: string, callback: (error: any, result: IUserModel) => void) {
-        this._userRepository.findById(_id, callback);
-    }
-
-    findOne(name: string, callback: (error: any, result: IUserModel) => void) {
-        this._userRepository.findOne({ name }, callback);
-    }
-
+  findOne(name: string, callback: (error: any, result: IUserModel) => void) {
+    this.userRepository.findOne({ name }, callback);
+  }
 }
-
 
 Object.seal(UserBusiness);
 export = UserBusiness;

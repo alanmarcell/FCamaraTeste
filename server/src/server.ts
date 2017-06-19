@@ -1,16 +1,13 @@
-/// <reference path="../typings/index.d.ts" />
-
 import express = require('express');
-import BaseRoutes = require("./config/routes/Routes");
-import UserController = require("./controllers/UserController");
-import bodyParser = require("body-parser");
-var morgan = require('morgan');
+import BaseRoutes = require('./config/routes/Routes');
+import bodyParser = require('body-parser');
+import morgan = require('morgan');
 
 import path = require('path');
-var port: number = process.env.PORT || 3000;
-var env: string = process.env.NODE_ENV || 'developement';
+const port: number = process.env.PORT || 3000;
+const env: string = process.env.NODE_ENV || 'developement';
 
-var app = express();
+const app = express();
 
 app.set('port', port);
 
@@ -27,10 +24,9 @@ app.use(morgan('dev'));
 
 app.use('/api', new BaseRoutes().routes);
 
-
-var renderIndex = (req: express.Request, res: express.Response) => {
+const renderIndex = (req: express.Request, res: express.Response) => {
     res.sendFile(path.resolve(__dirname, '../client/index.html'));
-}
+};
 
 app.get('/*', renderIndex);
 
@@ -44,10 +40,9 @@ if (env === 'developement') {
     });
 }
 
-
 // catch 404 and forward to error handler
 app.use(function (req: express.Request, res: express.Response, next) {
-    let err = new Error("Not Found");
+    const err = new Error('Not Found');
     next(err);
 });
 

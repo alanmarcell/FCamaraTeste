@@ -1,72 +1,70 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '../httpClient';
-
-import { Headers, Response } from '@angular/http';
+import { HttpClient } from '../httpClient';
 import 'rxjs/add/operator/toPromise';
-import { User } from "../models/user";
+import { User } from '../models/user';
 
 @Injectable()
 export class UserService {
 
-    private usersUrl = 'api/users';  // URL to web api
+  private usersUrl = 'api/users';  // URL to web api
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-    getUsers(): Promise<User[]> {
-        return this.http.get(this.usersUrl)
-            .toPromise()
-            .then(response => response.json())
-            .catch(this.handleError);
+  getUsers(): Promise<User[]> {
+    return this.http.get(this.usersUrl)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getUser(id: string) {
+    return this.http.get(this.usersUrl + '/' + id)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  save(user: User): Promise<User> {
+    if (user._id) {
+      return this.put(user);
     }
+    return this.post(user);
+  }
 
-    getUser(id: string) {
-        return this.http.get(this.usersUrl + '/' + id)
-            .toPromise()
-            .then(response => response.json())
-            .catch(this.handleError);
-    }
+  delete(user: User) {
 
-    save(user: User): Promise<User> {
-        if (user._id) {
-            return this.put(user);
-        }
-        return this.post(user);
-    }
+    let url = `${this.usersUrl}/${user._id}`;
 
-    private post(user: User): Promise<User> {
+    return this.http
+      .delete(url)
+      .toPromise()
+      .catch(this.handleError);
+  }
 
-        return this.http
-            .post(this.usersUrl, JSON.stringify(user))
-            .toPromise()
-            .then(response => {
-                return response.json().data;
-            })
-            .catch(this.handleError);
-    }
+  private post(user: User): Promise<User> {
 
-    private put(user: User) {
+    return this.http
+      .post(this.usersUrl, JSON.stringify(user))
+      .toPromise()
+      .then(response => {
+        return response.json().data;
+      })
+      .catch(this.handleError);
+  }
 
-        let url = `${this.usersUrl}/${user._id}`;
+  private put(user: User) {
 
-        return this.http
-            .put(url, JSON.stringify(user))
-            .toPromise()
-            .then(() => user)
-            .catch(this.handleError);
-    }
+    let url = `${this.usersUrl}/${user._id}`;
 
-    delete(user: User) {
+    return this.http
+      .put(url, JSON.stringify(user))
+      .toPromise()
+      .then(() => user)
+      .catch(this.handleError);
+  }
 
-        let url = `${this.usersUrl}/${user._id}`;
-
-        return this.http
-            .delete(url)
-            .toPromise()
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any) {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
-    }
+  private handleError(error: any) {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
 }

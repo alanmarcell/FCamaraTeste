@@ -1,9 +1,9 @@
-import mongoose = require("mongoose");
+import mongoose = require('mongoose');
 
-interface ProductModel extends mongoose.Document {
+interface IProductModel extends mongoose.Document {
     price: number;
     category: string;
     name: string;
 }
 
-export = ProductModel;
+export = IProductModel;

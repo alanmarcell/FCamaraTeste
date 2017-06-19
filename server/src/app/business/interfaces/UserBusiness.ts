@@ -1,7 +1,6 @@
-import BaseBusiness = require("./../BaseBusiness");
-import IUserModel = require("./../../model/interfaces/UserModel");
+import BaseBusiness = require('./../BaseBusiness');
+import IUserModel = require('./../../model/interfaces/UserModel');
 
-interface UserBusiness extends BaseBusiness<IUserModel> {
+interface IUserBusiness extends BaseBusiness<IUserModel> { }
 
-}
-export = UserBusiness;
+export = IUserBusiness;

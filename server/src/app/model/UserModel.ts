@@ -2,23 +2,24 @@ import IUserModel = require('./interfaces/UserModel');
 
 class UserModel {
 
-    private _userModel: IUserModel;
+    private userModel: IUserModel;
 
     constructor(userModel: IUserModel) {
-        this._userModel = userModel;
+        this.userModel = userModel;
     }
     get name (): string {
-        return this._userModel.name;
+        return this.userModel.name;
     }
 
     get password (): string {
-        return this._userModel.password;
+        return this.userModel.password;
     }
 
     get admin (): boolean {
-        return this._userModel.admin;
+        return this.userModel.admin;
     }
-    
+
 }
 Object.seal(UserModel);
+
 export =  UserModel;

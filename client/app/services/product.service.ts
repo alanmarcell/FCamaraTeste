@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '../httpClient';
-import { Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Product } from '../models/product';
 import { Router } from '@angular/router';

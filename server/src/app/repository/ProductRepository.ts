@@ -9,4 +9,5 @@ class ProductRepository extends RepositoryBase<IProductModel> {
 }
 
 Object.seal(ProductRepository);
+
 export = ProductRepository;

@@ -1,9 +1,9 @@
-import mongoose = require("mongoose");
+import mongoose = require('mongoose');
 
-interface UserModel extends mongoose.Document {
-    name: string, 
-    password: string, 
-    admin: boolean 
+interface IUserModel extends mongoose.Document {
+    name: string;
+    password: string;
+    admin: boolean;
 }
 
-export = UserModel;
+export = IUserModel;

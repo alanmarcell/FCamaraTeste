@@ -1,22 +1,23 @@
-import express = require("express");
-import AuthenticationController = require("./../../controllers/AuthenticationController");
+import express = require('express');
+import AuthenticationController = require('./../../controllers/AuthenticationController');
 
 var router = express.Router();
 class AuthenticationRoutes {
-    private _authenticationController: AuthenticationController;
+  private authenticationController: AuthenticationController;
 
-    constructor() {
-        this._authenticationController = new AuthenticationController();
-    }
+  constructor() {
+    this.authenticationController = new AuthenticationController();
+  }
 
-    get routes() {
-        var authenticationController = this._authenticationController;
+  get routes() {
+    var authenticationController = this.authenticationController;
 
-        router.post("/authenticateUser", authenticationController.authenticateUser);       
+    router.post('/authenticateUser', authenticationController.authenticateUser);
 
-        return router;
-    }
+    return router;
+  }
 }
 
 Object.seal(AuthenticationRoutes);
+
 export = AuthenticationRoutes;
