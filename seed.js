@@ -1,7 +1,7 @@
 // Load mongoose package
 var mongoose = require('mongoose');
 // Connect to MongoDB and create/use database called fcteste
-mongoose.connect("mongodb://admin:admin@jello.modulusmongo.net:27017/d7Ojirex");
+mongoose.connect("mongodb://localhost:27017/h4test");
 // Create a schema
 var ProductSchema = new mongoose.Schema({
     name: String,

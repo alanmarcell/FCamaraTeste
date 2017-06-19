@@ -10,12 +10,13 @@ class ProductRoutes {
     }
     get routes () {
         var controller = this._productController;
-
+        console.log('routes' );
         router.get("/products", controller.retrieve);
-        router.post("/products", controller.create);
-        router.put("/products/:_id", controller.update);
-        router.get("/products/:_id", controller.findById);
-        router.delete("/products/:_id", controller.delete);
+        router.post("/products/", controller.retrieve);
+        router.post("/product", controller.create);
+        router.put("/product/:_id", controller.update);
+        router.get("/product/:_id", controller.findById);
+        router.delete("/product/:_id", controller.delete);
 
         return router;
     }

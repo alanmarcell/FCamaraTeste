@@ -1,37 +1,48 @@
 <h1>{{title}}</h1>
 <h2>My Products</h2>
+<h4>Showing {{start+1}} to {{start+items}} of total {{numProd}}</h4>
 <div class="row">
-    <div class="col-md-12">
-        <div class="error" *ngIf="error">{{error}}</div>
-        <div class="pull-left">
-            <p *ngIf="message.length" class="alert alert-info">{{message}}</p>
-        </div>
-        <div class="pull-right">
-            <button class="btn btn-success" (click)="addProduct()">Add New Product</button>
-        </div>
+  <div class="col-md-12">
+    <div class="error" *ngIf="error">{{error}}</div>
+    <div class="pull-left">
+      <p *ngIf="message.length" class="alert alert-info">{{message}}</p>
     </div>
+    <div class="pull-right">
+      <button class="btn btn-success" (click)="addProduct()">Add New Product</button>
+    </div>
+  </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let product of products" [class.active]="product === selectedProduct">
-                    <td>{{product.name}}</td>
-                    <td>{{product.category}}</td>
-                    <td>{{product.price|currency:'BRL':true}}</td>
-                    <td><button class="btn btn-primary" (click)="gotoDetail(product)">Edit</button></td>
-                    <td><button class="btn btn-danger" (click)="deleteProduct(product, $event)">Delete</button></td>
-                </tr>
-            </tbody>
-        </table>
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products" [class.active]="product === selectedProduct">
+          <td>{{product.name}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.price|currency:'BRL':true}}</td>
+          <td><button class="btn btn-primary" (click)="gotoDetail(product)">Edit</button></td>
+          <td><button class="btn btn-danger" (click)="deleteProduct(product, $event)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="pull-right">
+          <button class="btn btn-success" *ngIf="items+1<numProd&&start+items+1<numProd" (click)="next()">Next</button>
+        </div>
+        <div class="pull-right">
+          <button class="btn btn-primary" *ngIf="start>0" (click)="prev()">Prev</button>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

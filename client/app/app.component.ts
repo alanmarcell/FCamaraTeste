@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 import { AuthService } from "./services/auth.service";
 @Component({
-    selector: 'my-app',
-    templateUrl: './app/app.html'
+  selector: 'my-app',
+  templateUrl: './app/app.html'
 })
 
 export class AppComponent {
-    title = 'FCamara Teste';
+  title = 'FCamara Teste';
 
-    constructor(private authenticateService: AuthService) { }
+  constructor(private authenticateService: AuthService) { }
 
-
-    logout() {
-        this.authenticateService.logout();
-    }
+  logout() {
+    this.authenticateService.logout();
+  }
 }
