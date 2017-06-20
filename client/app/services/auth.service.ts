@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '../httpClient';
 import 'rxjs/add/operator/toPromise';
 import { User } from '../models/user';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -11,7 +12,7 @@ export class AuthService {
   private expiresTimerId: any = null;
   private userAuthenticationUrl = 'api/authenticateUser';  // URL to web api
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.token = localStorage.getItem('_token');
   }
 
@@ -20,11 +21,15 @@ export class AuthService {
   }
 
   logout() {
-    this.doLogout();
+    this.authenticated = false;
+    this.expiresTimerId = null;
+    this.expires = 0;
+    this.token = null;
+    this.router.navigate(['/login']);
   }
 
-  authenticateUser(user: User): Promise<string> {
-    return this.postUser(user);
+  authenticateUser(user: User): Promise<any> {
+    return this.postUser(user).then(() => this.router.navigate(['products']));
   }
 
   public isAuthenticated() {
@@ -32,10 +37,8 @@ export class AuthService {
   }
 
   public doLogout() {
-    this.authenticated = false;
-    this.expiresTimerId = null;
-    this.expires = 0;
-    this.token = null;
+    this.logout();
+    alert('Seu token expirou, faça login novamente');
     console.log('Session has been cleared');
   }
 

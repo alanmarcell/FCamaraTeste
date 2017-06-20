@@ -4,12 +4,10 @@ import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class LoggedInGuard implements CanActivate {
-  auth;
+  auth: AuthService;
   constructor(auth: AuthService) {
     this.auth = auth;
   }
 
-  canActivate() {
-    return this.auth.isAuthenticated();
-  }
+  canActivate = () => this.auth.isAuthenticated();
 }

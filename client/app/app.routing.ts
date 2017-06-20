@@ -8,11 +8,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoggedInGuard } from './guards/loggedIn.guard';
 const appRoutes: Routes = [
   {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  },
-  {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [LoggedInGuard]
@@ -34,7 +29,12 @@ const appRoutes: Routes = [
     path: 'productDetail/:id',
     component: ProductDetailComponent,
     canActivate: [LoggedInGuard]
-  }
+  }, {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  { path: '**', component: LoginComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes, { useHash: true });

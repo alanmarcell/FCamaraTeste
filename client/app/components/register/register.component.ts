@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
-
+import { AuthService } from '../../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -21,7 +21,8 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private route: ActivatedRoute,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private authenticationService: AuthService) {
     this.myForm = fb.group({
       name: ['', Validators.required],
       password: ['', Validators.required],
@@ -35,14 +36,21 @@ export class RegisterComponent implements OnInit {
     this.user.admin = false;
   }
 
+  authenticate() {
+    this.authenticationService
+      .authenticateUser(this.user)
+      .catch(error => this.error = error);
+  }
+
   save() {
     this.userService
       .save(this.user)
       .then(user => {
         if (user) {
-          this.user = user; // saved user, w/ id if new
+          this.user = user;
         }
+        this.authenticate();
       })
-      .catch(error => this.error = error); // TODO: Display error message
+      .catch(error => this.error = error);
   }
 }
