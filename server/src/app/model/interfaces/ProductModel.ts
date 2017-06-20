@@ -1,7 +1,7 @@
 import mongoose = require('mongoose');
 
 interface IProductModel extends mongoose.Document {
-  _id: number;
+  _id?: number;
   price: number;
   category: string;
   name: string;

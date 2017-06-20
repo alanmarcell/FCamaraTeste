@@ -54,14 +54,14 @@ class AuthenticationController {
               // if user is found and password is right
               // create a token
               var token = jwt.sign(user, 'fcamara', {
-                expiresIn: 10 // expires in 60 seconds
+                expiresIn: 1000 // expires in 60 seconds
               });
               // return the information including token as JSON
               res.json({
                 success: true,
                 message: 'Enjoy your token!',
                 token: token,
-                expiresIn: 10
+                expiresIn: 1000
               });
             }
           }

@@ -35,13 +35,21 @@ class RepositoryBase<T extends mongoose.Document> implements IRead<T>, IWrite<T>
 
   // tslint:disable-next-line:variable-name
   update(_id: mongoose.Types.ObjectId, item: T, callback: (error: any, result: any) => void) {
-    this.model.update({ _id: _id }, item, callback);
+    // console.log(callback);
+    this.model.update({ _id: _id }, item, function (err, res) {
+      if (err) console.log('error', err);
+
+      callback(err, res);
+    });
 
   }
 
   // tslint:disable-next-line:variable-name
   delete(_id: string, callback: (error: any, result: any) => void) {
-    this.model.remove({ _id: this.toObjectId(_id) }, (err) => callback(err, null));
+    this.model.remove({ _id: this.toObjectId(_id) }, function (err, res) {
+      if (err) console.log('error', err);
+      callback(err, res);
+    });
 
   }
 

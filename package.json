@@ -7,7 +7,9 @@
     "compile": "gulp compile",
     "build": "gulp build",
     "deploy": "concurrently --kill-others \"gulp watch\" \"node ./dist/server/bin/www\"",
-    "postinstall": "gulp installTypings"
+    "postinstall": "gulp installTypings",
+    "pretest": "npm run build",
+    "test": "mocha  dist/**/*.test.js --timeout 500000"
   },
   "repository": {
     "type": "git",
@@ -34,11 +36,15 @@
     "@angular/upgrade": "~2.2.3",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
+    "chai": "^4.0.2",
     "core-js": "^2.4.1",
     "express": "^4.14.0",
     "jsonwebtoken": "^7.1.9",
+    "mocha": "^3.4.2",
     "mongoose": "^4.7.1",
     "morgan": "^1.7.0",
+    "ptz-log-file": "^1.0.5",
+    "ramda": "^0.24.1",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-rc.4",
     "systemjs": "0.19.41",
